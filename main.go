@@ -4,8 +4,9 @@ import "fmt"
 
 func main() {
 	cards := newDeck()
-
-	hand, deck := cards.deal(3)
+	deck := newDeck()
+	hand := newDeck()
+	hand, deck = cards.deal(3)
 
 	fmt.Println("Hand")
 	hand.print()
@@ -21,8 +22,16 @@ func main() {
 	fmt.Println("Deck")
 	deck.print()
 
-	fmt.Print(cards.toString())
+	fmt.Println(cards.toString())
 
 	deck.saveToFile("deck.txt")
+
+	d2 := newDeckFromFile("deck.txt")
+
+	fmt.Println("Deck 2:")
+	d2.print()
+	d2.shuffle()
+	fmt.Println("Deck 2  shuf:")
+	d2.print()
 
 }
